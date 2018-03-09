@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Lifecycle</title>
+  </head>
+  <body>
+    <script src="https://unpkg.com/vue"></script>
+    <div id="app">
+      {{message}}
+    </div>
+    <script type="text/javascript">
+      var app = new Vue({
+        el: '#app',
+        data: {
+          a: 1,
+          message: 'Hello world'
+        },
+        beforeCreate: function() {
+          console.log('beforeCreate, a is: ' + this.a);
+        },
+        created: function() {
+          console.log('created, a is: ' + this.a);
+        },
+        beforeMount: function() {
+          console.log('beforeMount');
+        },
+        mounted: function() {
+          console.log('mounted');
+        },
+        beforeUpdate: function() {
+          console.log('beforeUpdate');
+        },
+        updated: function() {
+          console.log('updated');
+        },
+        beforeDestroy: function() {
+          console.log('beforeDestroy');
+        },
+        destroyed: function() {
+          console.log('destroyed');
+        }
+      });
+    </script>
+  </body>
+</html>
