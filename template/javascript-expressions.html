@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Template Syntax</title>
+  </head>
+  <body>
+    <script src="https://unpkg.com/vue"></script>
+    <div id="app">
+      <p>{{number + 1}}</p>
+      <p>{{ok ? 'YES' : 'NO'}}</p>
+      <p>{{message.split('').reverse().join('')}}</p>
+    </div>
+    <script type="text/javascript">
+      var app = new Vue({
+        el: '#app',
+        data: {
+          number: 2,
+          ok: true,
+          message: 'hello'
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Template Syntax</title>
+  </head>
+  <body>
+    <script src="https://unpkg.com/vue"></script>
+    <div id="app">
+      <p v-if="seen">Now you can see me</p>
+      <p>Visite <a v-bind:href="url">Baidu.com</a></p>
+      <p>You can clicked <a href="#" v-on:click="doSomthing">this link</a> to get an alert.</p>
+    </div>
+    <script type="text/javascript">
+      var app = new Vue({
+        el: '#app',
+        data: {
+          seen: true,
+          url: 'http://baidu.com'
+        },
+        methods: {
+          doSomthing: function(e) {
+            e.preventDefault();
+            alert('Clicked.');
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

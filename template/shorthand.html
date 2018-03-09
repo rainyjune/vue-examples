@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Template Syntax</title>
+  </head>
+  <body>
+    <script src="https://unpkg.com/vue"></script>
+    <div id="app">
+      <p>full syntax v-bind:href="url" <a v-bind:href="url">google.com</a></p>
+      <p>short syntax :href="url" <a :href="url">google.com</a></p>
+
+      <hr />
+      <p>full syntax v-on:click="doSomething" <a href="#" v-on:click="doSomething">Google.com</a></p>
+      <p>short syntax @click="doSomething" <a href="#" @click="doSomething">Google.com</a></p>
+    </div>
+    <script type="text/javascript">
+      var app = new Vue({
+        el: '#app',
+        data: {
+          url: 'http://google.com'
+        },
+        methods: {
+          doSomething: function(e) {
+            e.preventDefault();
+            alert('hello ' + e.target.innerText);
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
