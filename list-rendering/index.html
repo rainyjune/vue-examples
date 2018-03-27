@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hello world</title>
+  </head>
+  <body>
+    <script src="https://unpkg.com/vue"></script>
+    <div id="app">
+      <ul>
+        <li v-for="(item, index) in items" :key="item.id">
+          {{parentMessage}} - {{index}} - {{item.message}}
+        </li>
+      </ul>
+      <p>use of as the delimiter instead of in:</p>
+      <ul>
+        <li v-for="(item, index) of items">
+          {{parentMessage}} - {{index}} - {{item.message}}
+        </li>
+      </ul>
+      <p>Use v-for to iterate an object:</p>
+      <ul>
+        <li v-for="value in object">
+          {{value}}
+        </li>
+      </ul>
+
+      <p>Provide a second argument for the key:</p>
+      <ul>
+        <li v-for="(value,key) in object">
+          {{key}} : {{value}}
+        </li>
+      </ul>
+
+      <p>And another for the index:</p>
+      <ul>
+        <li v-for="(value,key, index) in object">
+          {{index}}.{{key}} : {{value}}
+        </li>
+      </ul>
+
+      <p>Displaying filtered/Sorted  results</p>
+      <ul>
+        <li v-for="n in evenNumbers">
+          {{n}}
+        </li>
+      </ul>
+
+      <p>v-for with a Range</p>
+      <div>
+        <span v-for="n in 10">{{ n }} </span>
+      </div>
+
+      <p>v-for on a &lt;template&gt;</p>
+      <ul>
+        <template v-for="item in items">
+          <li>{{item.message}}</li>
+          <li class="divider"></li>
+        </template>
+      </ul>
+
+      <p>v-for with v-if</p>
+      <ul v-if="todos.length">
+        <li v-for="todo in todos" v-if="!todo.isComplete">
+          {{ todo }}
+        </li>
+      </ul>
+      <p v-else>No todos left!</p>
+    </div>
+    <script type="text/javascript">
+      var app = new Vue({
+        el: '#app',
+        data: {
+          parentMessage: 'Parent',
+          items: [
+            { id: 1, message: 'Foo'},
+            { id: 2, message: 'Bar'}
+          ],
+          object: {
+            firstName: 'John',
+            lastName: 'Doe',
+            age: 30
+          },
+          todos: [
+            {isComplete: true, message: 'test1'},
+            {isComplete: true, message: 'test2'},
+            {isComplete: true, message: 'test3'},
+            {isComplete: false, message: 'test4'}
+          ],
+          numbers: [1, 2, 3, 4, 5]
+        },
+        computed: {
+          evenNumbers: function() {
+            return this.numbers.filter(function(number) {
+              return number % 2 === 0;
+            });
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

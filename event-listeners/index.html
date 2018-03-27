@@ -8,16 +8,41 @@
     <div id="app-5">
       <p>{{ message }}</p>
       <button v-on:click="reverseMessage">Reverse Message</button>
+
+      <p><button v-on:click="counter+=1">Add 1</button></p>
+      <p>The button above has been clicked for {{counter}} times.</p>
+
+      <legend>
+        <button v-on:click="greet">Greet</button>
+      </legend>
+
+      <p><button v-on:click="say('hi')">Say hi</button><button v-on:click="say('what')">Say what</button></p>
+      <p><button v-on:click="warn('Form cannot be submitted yet.', $event)">Submit</button></p>
     </div>
     <script type="text/javascript">
       var app = new Vue({
         el: '#app-5',
         data: {
-          message: 'Hello Vue.js!'
+          counter: 0,
+          message: 'Hello Vue.js!',
+          name: 'Vue.js'
         },
         methods: {
+          greet: function(event) {
+            alert('Hello ' + this.name);
+            if (event) {
+              alert(event.target.tagName);
+            }
+          },
           reverseMessage: function () {
             this.message = this.message.split('').reverse().join('');
+          },
+          say: function(message) {
+            alert(message);
+          },
+          warn: function(message, event) {
+            if (event) event.preventDefault();
+            alert(message);
           }
         }
       });

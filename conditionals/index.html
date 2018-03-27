@@ -9,12 +9,42 @@
       <span v-if="seen">
         Now you see me
       </span>
+      <h1 v-if="ok">Yes</h1>
+      <h1 v-else>No</h1>
+
+      <template v-if="ok">
+        <h1>title</h1>
+        <p>Paragraph 1</p>
+        <p>Paragraph 2</p>
+      </template>
+
+      <div v-if="Math.random() > 0.5">
+        Math.random() > 0.5
+      </div>
+      <div v-else>
+        Math.random() <= 0.5
+      </div>
+
+      <div v-if="type === 'A'">
+        A
+      </div>
+      <div v-else-if="type === 'B'">
+        B
+      </div>
+      <div v-else-if="type === 'C'">
+        C
+      </div>
+      <div v-else>
+        Not A/B/C
+      </div>
     </div>
     <script type="text/javascript">
       var app = new Vue({
         el: '#app-3',
         data: {
-          seen: true
+          seen: true,
+          ok: true,
+          type: 'A'
         }
       });
     </script>

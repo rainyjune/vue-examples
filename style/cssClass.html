@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>css class</title>
+  </head>
+  <body>
+    <script src="https://unpkg.com/vue"></script>
+    <div id="app" v-bind:class="{ active: isActive }">
+      some text
+      <p class="static" v-bind:class="{ active: isActive, 'text-danger': hasError}">Error</p>
+      <p v-bind:class="classObject">The bound object doesn't have to be inline.</p>
+      <p v-bind:class="classObject2">We can also bind a computed property that returns an object.</p>
+      <p v-bind:class="[activeClass, errorClass]">array syntax v-bind:class="[activeClass, errorClass]"</p>
+    </div>
+    <script type="text/javascript">
+      var app = new Vue({
+        el: '#app',
+        data: {
+          isActive: false,
+          hasError: false,
+          error: {
+            type: 'fatal'
+          },
+          classObject: {
+            active: true,
+            hasError: true
+          },
+          activeClass: 'active',
+          errorClass: 'text-danger'
+        },
+        computed: {
+          classObject2: function (argument) {
+            return {
+              active: this.isActive && !this.error,
+              'text-danger': this.error && this.error.type === 'fatal'
+            }
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
